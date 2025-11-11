@@ -1,0 +1,25 @@
+name: Run Java Program
+
+# Run this workflow every time you push new code
+on: [push]
+
+jobs:
+  run-java:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Get the latest version of your code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Java (choose version 17 or 21 if you like)
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+
+      # Step 3: Compile and run your Java file
+      - name: Compile and Run
+        run: |
+          javac happy_ball.java
+          java happy_ball
